@@ -1,5 +1,5 @@
+import 'package:componet_flutter/widgets/AppBar.dart';
 import 'package:flutter/material.dart';
-import 'widgets/TextButton.dart'; // Đường dẫn tới widget
 
 void main() {
   runApp(const MyApp());
@@ -13,19 +13,28 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Responsive Text Button Example'),
+        appBar: ResponsiveAppBar(
+          title: 'Responsive AppBar', // Tiêu đề
+          centerTitle: true, // Căn giữa tiêu đề
+          backgroundColor: Colors.teal, // Màu nền
+          elevation: 2.0, // Độ nổi
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                debugPrint('Search button pressed');
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.more_vert),
+              onPressed: () {
+                debugPrint('More button pressed');
+              },
+            ),
+          ],
         ),
-        body: Center(
-          child: ResponsiveTextButton(
-            
-            text: 'Click Me!',
-            onPressed: () {
-              debugPrint('Responsive Button Pressed!');
-            },
-            textColor: Colors.blue,
-            
-          ),
+        body: const Center(
+          child: Text('Responsive AppBar Example'),
         ),
       ),
     );
